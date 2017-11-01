@@ -21,20 +21,20 @@ class Oystercard
 
   def top_up(amount)
     raise 'Oystercard has reached the limit' if exceed?(amount)
-    @balance += amount
+    increment(amount)
   end
 
   def touch_in(station)
     raise "Sorry insufficient funds available" if insufficient_funds?
-    @entry_station = station
+    add_entry_station(station)
     in_journey?
   end
 
   def touch_out(station)
     deduct(MINIMUM_FARE)
-    @exit_station = station
+    add_exit_station(station)
     update_journey_history
-    @entry_station = nil
+    reset_entry_station
     in_journey?
   end
 
@@ -56,8 +56,24 @@ class Oystercard
     @balance -= cost
   end
 
+  def increment(amount)
+    @balance += amount
+  end
+
   def update_journey_history
     @journey_history << { @entry_station => @exit_station }
+  end
+
+  def add_entry_station(station)
+    @entry_station = station
+  end
+
+  def add_exit_station(station)
+    @exit_station = station
+  end
+
+  def reset_entry_station
+    @entry_station = nil
   end
 
 end
