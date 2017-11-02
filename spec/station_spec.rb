@@ -2,9 +2,8 @@ require 'station'
 
 describe Station do
 
-  let(:station) do
-    station = Station.new("Kings Cross", 1)
-  end
+  let(:station) { Station.new("Kings Cross", 1) }
+  
 
   it "Station has a name" do
     expect(station.name).not_to be_empty
