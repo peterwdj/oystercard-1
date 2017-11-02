@@ -23,13 +23,13 @@ class Oystercard
     increment(amount)
   end
 
-  def touch_in(station)
+  def touch_in(station = nil)
     raise "Sorry insufficient funds available" if insufficient_funds?
     @journey.start_journey(station)
     in_journey?
   end
 
-  def touch_out(station)
+  def touch_out(station = nil)
     deduct(MINIMUM_FARE)
     @journey.end_journey(station)
     update_journey_history

@@ -73,7 +73,7 @@ describe Oystercard do
     it "Touching in and out should create one journey" do
       touched_in_card
       subject.touch_out("Aldgate East")
-      expect(subject.journey_history).to eq ["Kings Cross" => "Aldgate East"]
+      expect(subject.journey_history).to eq [{ entry_station: "Kings Cross", exit_station: "Aldgate East" }]
     end
 
   end
