@@ -1,7 +1,6 @@
 require 'journey'
-
+g
 describe Journey do
-  subject(:card)
   let(:entry_station) { double(:Aldgate) }
   let(:exit_station) { double(:Finchley) }
 
@@ -16,12 +15,4 @@ describe Journey do
       end
     end
   end
-  #
-  # describe '#penalty_fare' do
-  #   context 'Charging a penalty fare when touching in twice in a row' do
-  #     it "Should charge a £6 penalty fare" do
-  #       allow
-  #     end
-  #   end
-  # end
 end

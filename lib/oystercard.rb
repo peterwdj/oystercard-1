@@ -10,6 +10,7 @@ class Oystercard
   DEFAULT_BALANCE = 0
   MINIMUM_FARE = 1
   MAXIMUM_BALANCE = 90
+  PENALTY_FARE = 6
 
   def initialize(balance = DEFAULT_BALANCE, journey = Journey.new)
     @balance = balance
@@ -65,6 +66,19 @@ class Oystercard
 
   def reset_journey
     @journey.reset_journey
+  end
+------------------------------------------------
+  def fare?
+    in_journey? ? deduct(MINIMUM_FARE) : deduct(PENALTY_FARE)
+  end
+
+  def in_penalty_fare?
+    @journey_history.last.fetch(:exit_station).nil?
+    deduct(PENALTY_FARE)
+  end
+
+  def out_penalty_fare?
+    @journey_history.last.fetch(:entry_station).nil? ? deduct(PENALTY_FARE) : deduct(MINIMUM_FARE)
   end
 
 end
