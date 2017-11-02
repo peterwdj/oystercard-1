@@ -7,9 +7,13 @@ attr_reader :exit_station
     @exit_station = nil
   end
 
-  def current_journey
-    { @entry_station => @exit_station }
+  def current_journey(entry_station = nil, exit_station = nil)
+    start_journey
+    end_journey
+    [{ @entry_station => @exit_station }]
   end
+
+  private
 
   def start_journey(entry_station)
     @entry_station = entry_station

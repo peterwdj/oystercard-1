@@ -26,7 +26,7 @@ describe Journey do
       it 'should return complete single journey' do
         subject.start_journey(entry_station)
         subject.end_journey(exit_station)
-        expect(subject.current_journey). to eq {entry_station => exit_station}
+        expect(subject.current_journey).to eq [{ entry_station => exit_station }]
       end
     end
   end
