@@ -1,11 +1,12 @@
 
-require './lib/oystercard.rb'
+require 'oystercard'
+require 'journey'
 
 describe Oystercard do
 
   let(:touched_in_card) do
     subject.top_up(50)
-    subject.touch_in("Kings Cross")
+    subject.touch_in("Aldgate")
   end
 
   it 'Sets new card to have a default balance of 0' do

@@ -27,7 +27,7 @@ class Oystercard
 
   def touch_in(station)
     raise "Sorry insufficient funds available" if insufficient_funds?
-    add_entry_station(station)
+    journey.start_journey(station)
     in_journey?
   end
 

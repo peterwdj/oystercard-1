@@ -1,6 +1,5 @@
 class Journey
   attr_reader :current_journey, :journey
-  #attr_reader :entry_station, :exit_station
 
   public
 
@@ -16,6 +15,14 @@ class Journey
     @journey = add_journey
     reset_journey
   end
+  
+  def start_journey(entry_station)
+    @entry_station = entry_station
+  end
+
+  def end_journey(exit_station)
+    @exit_station = exit_station
+  end
 
   private
 
@@ -26,13 +33,5 @@ class Journey
   def reset_journey
     @entry_station = nil
     @exit_station = nil
-  end
-
-  def start_journey(entry_station)
-    @entry_station = entry_station
-  end
-
-  def end_journey(exit_station)
-    @exit_station = exit_station
   end
 end
