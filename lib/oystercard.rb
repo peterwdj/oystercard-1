@@ -26,12 +26,13 @@ class Oystercard
 
   def touch_in(station = nil)
     raise "Sorry insufficient funds available" if insufficient_funds?
+    in_penalty?
     @journey.start_journey(station)
     in_journey?
   end
 
   def touch_out(station = nil)
-    deduct(MINIMUM_FARE)
+    penalty_or_fare?
     @journey.end_journey(station)
     update_journey_history
     reset_journey
@@ -67,18 +68,13 @@ class Oystercard
   def reset_journey
     @journey.reset_journey
   end
-------------------------------------------------
-  def fare?
+
+  def in_penalty?
+    deduct(PENALTY_FARE) if in_journey?
+  end
+
+  def penalty_or_fare?
     in_journey? ? deduct(MINIMUM_FARE) : deduct(PENALTY_FARE)
-  end
-
-  def in_penalty_fare?
-    @journey_history.last.fetch(:exit_station).nil?
-    deduct(PENALTY_FARE)
-  end
-
-  def out_penalty_fare?
-    @journey_history.last.fetch(:entry_station).nil? ? deduct(PENALTY_FARE) : deduct(MINIMUM_FARE)
   end
 
 end

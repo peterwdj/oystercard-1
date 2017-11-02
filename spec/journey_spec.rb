@@ -1,5 +1,5 @@
 require 'journey'
-g
+
 describe Journey do
   let(:entry_station) { double(:Aldgate) }
   let(:exit_station) { double(:Finchley) }
