@@ -16,12 +16,12 @@ describe Journey do
       end
     end
   end
-
-  describe '#penalty_fare' do
-    context 'Charging a penalty fare when touching in twice in a row' do
-      it "Should charge a £6 penalty fare" do
-        allow
-      end
-    end
-  end
+  #
+  # describe '#penalty_fare' do
+  #   context 'Charging a penalty fare when touching in twice in a row' do
+  #     it "Should charge a £6 penalty fare" do
+  #       allow
+  #     end
+  #   end
+  # end
 end
