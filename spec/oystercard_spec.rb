@@ -23,12 +23,14 @@ describe Oystercard do
       card = Oystercard.new 50
       expect { card.top_up(50) }.to raise_error 'Oystercard has reached the limit'
     end
+
   end
 
   describe "#in_journey?" do
     it "Journey status should be false by default" do
       expect(subject.in_journey).to eq false
     end
+
   end
 
   describe '#touch_in' do
@@ -84,5 +86,7 @@ describe Oystercard do
       subject.touch_out("Aldgate East")
       expect(subject.journey_history).to eq ["Kings Cross" => "Aldgate East"]
     end
+
   end
+  
 end
