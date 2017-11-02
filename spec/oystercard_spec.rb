@@ -6,7 +6,7 @@ describe Oystercard do
 
   let(:touched_in_card) do
     subject.top_up(50)
-    subject.touch_in("Aldgate")
+    subject.touch_in("Kings Cross")
   end
 
   it 'Sets new card to have a default balance of 0' do
@@ -47,7 +47,7 @@ describe Oystercard do
 
     it "Updates @entry_station when touching in " do
       touched_in_card
-      expect(subject.entry_station).to eq "Kings Cross"
+      expect(subject.journey.entry_station).to eq "Kings Cross"
     end
   end
 

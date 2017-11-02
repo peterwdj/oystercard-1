@@ -15,8 +15,8 @@ class Oystercard
     @balance = balance
     @journey = journey
     @in_journey = in_journey?
-    @entry_station = nil
-    @exit_station = nil
+    #@entry_station = nil
+    # @exit_station = nil
     @journey_history = []
   end
 
@@ -27,7 +27,7 @@ class Oystercard
 
   def touch_in(station)
     raise "Sorry insufficient funds available" if insufficient_funds?
-    journey.start_journey(station)
+    @journey.start_journey(station)
     in_journey?
   end
 
@@ -46,7 +46,8 @@ class Oystercard
   end
 
   def in_journey?
-    @entry_station != nil ? @in_journey = true : @in_journey = false
+    p "ENTRY STATION", @journey.entry_station
+    @journey.entry_station != nil ? @in_journey = true : @in_journey = false
   end
 
   def insufficient_funds?
@@ -62,7 +63,7 @@ class Oystercard
   end
 
   def update_journey_history
-    @journey_history << { @entry_station => @exit_station }
+    @journey_history << { journey.entry_station => @exit_station }
   end
 
   def add_entry_station(station)
@@ -74,7 +75,7 @@ class Oystercard
   end
 
   def reset_entry_station
-    @entry_station = nil
+    @journey.entry_station = nil
   end
 
 end
