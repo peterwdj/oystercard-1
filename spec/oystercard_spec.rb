@@ -44,11 +44,6 @@ describe Oystercard do
     it "@balance must be at least 1 to touch_in" do
       expect { subject.touch_in("Kings Cross") }.to raise_error "Sorry insufficient funds available"
     end
-
-    it "Updates @entry_station when touching in " do
-      touched_in_card
-      expect(subject.journey.entry_station).to eq "Kings Cross"
-    end
   end
 
   describe '#touch_out' do
@@ -64,15 +59,8 @@ describe Oystercard do
       expect { subject.touch_out("Aldgate East") }.to change { subject.balance }.from(50).to(49)
     end
 
-    it "Updates @exit_station when touching out" do
-      touched_in_card
-      subject.touch_out("Aldgate East")
-      expect(subject.exit_station).to eq "Aldgate East"
-    end
-
     it "Resets @entry_station to nil" do
       touched_in_card
-      # subject.touch_in("Kings Cross")
       subject.touch_out("Aldgate East")
       expect(subject.entry_station).to eq nil
     end

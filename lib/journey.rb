@@ -24,14 +24,16 @@ class Journey
     @exit_station = exit_station
   end
 
+  def reset_journey
+    @entry_station = nil
+    @exit_station = nil
+  end
+
   private
 
   def add_journey
     [{ @entry_station => @exit_station }]
   end
 
-  def reset_journey
-    @entry_station = nil
-    @exit_station = nil
-  end
+
 end
