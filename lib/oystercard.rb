@@ -26,30 +26,17 @@ class Oystercard
 
   def touch_in(station = nil)
     raise "Sorry insufficient funds available" if insufficient_funds?
-    in_penalty?
-    @journey.start_journey(station)
-    add_new_journey
-    in_journey?
+    touch_in_penalty?
+    begin_journey(station)
   end
 
   def touch_out(station = nil)
     penalty_or_fare?
     @journey.end_journey(station)
-    update_journey_history
-    reset_journey
-    in_journey?
+    finish_journey
   end
 
   private
-  def update_journey_history
-    if @journey_history.empty?
-      @journey_history << { entry_station: nil, exit_station: journey.exit_station }
-    elsif @journey_history.last.fetch(:exit_station).nil?
-      @journey_history.last[:exit_station] = journey.exit_station
-    else
-      add_complete_journey
-    end
-  end
 
   def exceed?(value)
     @balance + value > MAXIMUM_BALANCE
@@ -78,23 +65,43 @@ class Oystercard
     }
   end
 
-  def add_complete_journey
+  def update_exit
+    @journey_history.last[:exit_station] = journey.exit_station
+  end
+
+  def add_no_entry
     @journey_history << {
-      entry_station: journey.entry_station,
+      entry_station: nil,
       exit_station: journey.exit_station
-    }
+    }method_name
+  end
+
+  def update_journey_history
+    in_journey? ? update_exit : add_no_entry
   end
 
   def reset_journey
     @journey.reset_journey
   end
 
-  def in_penalty?
+  def touch_in_penalty?
     deduct(PENALTY_FARE) if in_journey?
   end
 
   def penalty_or_fare?
     in_journey? ? deduct(MINIMUM_FARE) : deduct(PENALTY_FARE)
+  end
+
+  def finish_journey
+    update_journey_history
+    reset_journey
+    in_journey?
+  end
+
+  def begin_journey(station)
+    @journey.start_journey(station)
+    add_new_journey
+    in_journey?
   end
 
 end
