@@ -23,8 +23,9 @@ class Oystercard
   end
 
   def touch_out(station = nil)
-    penalty_or_fare?
+    penalty?
     @journey_log.finish_journey(station)
+    # NEED TO ADD IN HERE THE FARE DEDUCTION
   end
 
   private
@@ -53,7 +54,7 @@ class Oystercard
     deduct(PENALTY_FARE) if in_journey?
   end
 
-  def penalty_or_fare?
-    in_journey? ? deduct(MINIMUM_FARE) : deduct(PENALTY_FARE)
+  def penalty?
+    deduct(PENALTY_FARE) unless in_journey?
   end
 end

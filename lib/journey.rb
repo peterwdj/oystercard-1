@@ -1,5 +1,5 @@
 class Journey
-  attr_reader :journey, :entry_station, :exit_station
+  attr_reader :journey, :entry_station, :exit_station, :fare
 
   def initialize
     @entry_station = nil
@@ -38,7 +38,11 @@ class Journey
   end
 
   def calculate_fare
-    1 + (@entry_station.zone - @exit_station.zone).abs
+    p @oystercard.journey_log
+    journey_to_calculate = @journey_log.journey_history.last
+    if journey_to_calculate.entry_station != nil && journey_to_calculate.exit_station != nil
+      1 + (journey_to_calculate.entry_station.zone - journey_to_calculate.exit_station.zone).abs
+    end
   end
 
 end
