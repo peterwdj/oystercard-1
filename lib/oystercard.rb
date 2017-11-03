@@ -1,6 +1,3 @@
-require 'journey_log'
-require 'journey'
-
 class Oystercard
   attr_reader :balance
 
@@ -9,9 +6,8 @@ class Oystercard
   MAXIMUM_BALANCE = 90
   PENALTY_FARE = 6
 
-  def initialize(balance = DEFAULT_BALANCE, journey = Journey.new)
+  def initialize(balance = DEFAULT_BALANCE)
     @balance = balance
-    @journey = journey
     @journey_log = JourneyLog.new
   end
 

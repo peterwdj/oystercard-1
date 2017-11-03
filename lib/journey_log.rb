@@ -1,6 +1,4 @@
-require 'journey'
 class JourneyLog
-
   attr_reader :in_journey
   attr_reader :entry_station
   attr_reader :exit_station

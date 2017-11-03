@@ -15,4 +15,10 @@ describe Journey do
       end
     end
   end
+
+  describe '#fare' do
+    it "Should deduct a fare of £3 for a trip from Zone 1 to Zone 3" do
+
+    end
+  end
 end
