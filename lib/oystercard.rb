@@ -1,5 +1,5 @@
 class Oystercard
-  attr_reader :balance
+  attr_reader :balance, :journey_log
 
   DEFAULT_BALANCE = 0
   MINIMUM_FARE = 1
