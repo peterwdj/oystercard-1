@@ -27,10 +27,18 @@ class Journey
     @exit_station = nil
   end
 
+  def fare
+    calculate_fare
+  end
+
   private
 
   def add_journey
     [{ @entry_station => @exit_station }]
+  end
+
+  def calculate_fare
+    1 + (@entry_station.zone - @exit_station.zone).abs
   end
 
 end
