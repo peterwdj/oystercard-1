@@ -7,5 +7,7 @@ ruby '2.4.1' #:patchlevel => '2017-03-22 revision 58053'
 # gem "rails"
 
 group :test, :development do
+  gem 'coveralls', require: false
   gem 'rspec'
+  gem 'simplecov', require: false
 end
