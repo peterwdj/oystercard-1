@@ -73,7 +73,7 @@ class Oystercard
     @journey_history << {
       entry_station: nil,
       exit_station: journey.exit_station
-    }method_name
+    }
   end
 
   def update_journey_history
@@ -103,5 +103,4 @@ class Oystercard
     add_new_journey
     in_journey?
   end
-
 end

@@ -75,7 +75,5 @@ describe Oystercard do
       subject.touch_out("Aldgate East")
       expect(subject.journey_history).to eq [{ entry_station: "Kings Cross", exit_station: "Aldgate East" }]
     end
-
   end
-
 end
