@@ -1,3 +1,5 @@
+# require 'journey_log'
+
 class Oystercard
   attr_reader :balance, :journey_log
 
@@ -6,8 +8,9 @@ class Oystercard
   MAXIMUM_BALANCE = 90
   PENALTY_FARE = 6
 
-  def initialize(balance = DEFAULT_BALANCE)
+  def initialize(balance = DEFAULT_BALANCE, journey = Journey.new)
     @balance = balance
+    @journey = journey
     @journey_log = JourneyLog.new
   end
 
@@ -23,9 +26,8 @@ class Oystercard
   end
 
   def touch_out(station = nil)
-    penalty?
+    penalty_or_fare?
     @journey_log.finish_journey(station)
-    # NEED TO ADD IN HERE THE FARE DEDUCTION
   end
 
   private
@@ -54,7 +56,7 @@ class Oystercard
     deduct(PENALTY_FARE) if in_journey?
   end
 
-  def penalty?
-    deduct(PENALTY_FARE) unless in_journey?
+  def penalty_or_fare?
+    in_journey? ? deduct(MINIMUM_FARE) : deduct(PENALTY_FARE)
   end
 end

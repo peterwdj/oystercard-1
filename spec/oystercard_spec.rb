@@ -1,14 +1,11 @@
 require 'oystercard'
 require 'journey'
-require 'journey_log'
 
 describe Oystercard do
 
-  let(:entry_station) { double('Aldgate', zone: 1) }
-  let(:exit_station) { double('Finchley', zone: 4) }
   let(:touched_in_card) do
     subject.top_up(50)
-    subject.touch_in(entry_station)
+    subject.touch_in("Kings Cross")
   end
 
   it 'Sets new card to have a default balance of 0' do
@@ -31,16 +28,14 @@ describe Oystercard do
 
   describe '#touch_in' do
     it "@balance must be at least 1 to touch_in" do
-      expect { subject.touch_in(entry_station) }.to raise_error "Sorry insufficient funds available"
+      expect { subject.touch_in("Kings Cross") }.to raise_error "Sorry insufficient funds available"
     end
   end
 
   describe '#touch_out' do
-    it "Deducts @journey.fare from @balance" do
-      subject.top_up(50)
-      subject.touch_in(entry_station)
-      subject.touch_out(exit_station)
-      expect(subject.balance).to eq 46
+    it "Deducts MINIMUM_FARE from @balance" do
+      touched_in_card
+      expect { subject.touch_out("Aldgate East") }.to change { subject.balance }.from(50).to(49)
     end
   end
 end

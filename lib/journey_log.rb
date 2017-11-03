@@ -1,4 +1,6 @@
+# require 'journey'
 class JourneyLog
+
   attr_reader :in_journey
   attr_reader :entry_station
   attr_reader :exit_station
@@ -18,7 +20,9 @@ class JourneyLog
 
   def finish_journey(station)
     @journey.end_journey(station)
-    complete_journey
+    update_journey_history
+    reset_journey
+    in_journey?
   end
 
   private
@@ -51,11 +55,5 @@ class JourneyLog
 
   def reset_journey
     @journey.reset_journey
-  end
-
-  def complete_journey
-    update_journey_history
-    reset_journey
-    in_journey?
   end
 end

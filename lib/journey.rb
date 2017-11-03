@@ -1,5 +1,5 @@
 class Journey
-  attr_reader :journey, :entry_station, :exit_station, :fare
+  attr_reader :journey, :entry_station, :exit_station
 
   def initialize
     @entry_station = nil
@@ -33,18 +33,4 @@ class Journey
     [{ @entry_station => @exit_station }]
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  def calculate_fare
-    p @oystercard.journey_log
-    journey_to_calculate = @journey_log.journey_history.last
-    if journey_to_calculate.entry_station != nil && journey_to_calculate.exit_station != nil
-      1 + (journey_to_calculate.entry_station.zone - journey_to_calculate.exit_station.zone).abs
-    end
-  end
-
-=======
->>>>>>> parent of 550628a... Added method in Journey class to calculate fares
-=======
->>>>>>> parent of 550628a... Added method in Journey class to calculate fares
 end
