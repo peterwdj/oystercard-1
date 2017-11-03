@@ -62,8 +62,6 @@
         1,
         4,
         4,
-        4,
-        4,
         null,
         null,
         1,
@@ -95,6 +93,12 @@
         null,
         null,
         1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        4,
         4,
         null,
         null
@@ -202,6 +206,7 @@
       ],
       "/home/peterwdj/makers/makers-junior/week-2/oystercard/lib/oystercard.rb": [
         1,
+        1,
         null,
         1,
         1,
@@ -292,6 +297,6 @@
         null
       ]
     },
-    "timestamp": 1509713519
+    "timestamp": 1509719809
   }
 }

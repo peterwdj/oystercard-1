@@ -20,9 +20,7 @@ class JourneyLog
 
   def finish_journey(station)
     @journey.end_journey(station)
-    update_journey_history
-    reset_journey
-    in_journey?
+    complete_journey
   end
 
   private
@@ -55,5 +53,11 @@ class JourneyLog
 
   def reset_journey
     @journey.reset_journey
+  end
+
+  def complete_journey
+    update_journey_history
+    reset_journey
+    in_journey?
   end
 end

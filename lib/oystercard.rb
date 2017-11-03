@@ -1,4 +1,5 @@
 require 'journey_log'
+require 'journey'
 
 class Oystercard
   attr_reader :balance
