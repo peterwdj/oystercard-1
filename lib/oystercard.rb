@@ -37,7 +37,7 @@ class Oystercard
     @journey.end_journey(station)
     if @journey_history.empty?
       @journey_history << { entry_station: nil, exit_station: journey.exit_station }
-    elsif @journey_history.last.fetch(:exit_station) == nil
+    elsif @journey_history.last.fetch(:exit_station).nil?
       @journey_history.last[:exit_station] = journey.exit_station
     else
       update_journey_history
@@ -69,11 +69,17 @@ class Oystercard
   end
 
   def add_new_journey
-    @journey_history << { entry_station: journey.entry_station, exit_station: nil }
+    @journey_history << {
+      entry_station: journey.entry_station,
+      exit_station: nil
+    }
   end
 
   def update_journey_history
-    @journey_history << { entry_station: journey.entry_station, exit_station: journey.exit_station }
+    @journey_history << {
+      entry_station: journey.entry_station,
+      exit_station: journey.exit_station
+    }
   end
 
   def reset_journey

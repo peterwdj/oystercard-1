@@ -1,7 +1,5 @@
 class Journey
-  attr_reader :current_journey, :journey, :start_journey, :end_journey, :entry_station, :exit_station
-
-  public
+  attr_reader :journey, :entry_station, :exit_station
 
   def initialize
     @entry_station = nil
@@ -34,6 +32,5 @@ class Journey
   def add_journey
     [{ @entry_station => @exit_station }]
   end
-
 
 end
