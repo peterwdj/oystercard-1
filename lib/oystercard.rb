@@ -35,18 +35,21 @@ class Oystercard
   def touch_out(station = nil)
     penalty_or_fare?
     @journey.end_journey(station)
-    if @journey_history.empty?
-      @journey_history << { entry_station: nil, exit_station: journey.exit_station }
-    elsif @journey_history.last.fetch(:exit_station).nil?
-      @journey_history.last[:exit_station] = journey.exit_station
-    else
-      update_journey_history
-    end
+    update_journey_history
     reset_journey
     in_journey?
   end
 
   private
+  def update_journey_history
+    if @journey_history.empty?
+      @journey_history << { entry_station: nil, exit_station: journey.exit_station }
+    elsif @journey_history.last.fetch(:exit_station).nil?
+      @journey_history.last[:exit_station] = journey.exit_station
+    else
+      add_complete_journey
+    end
+  end
 
   def exceed?(value)
     @balance + value > MAXIMUM_BALANCE
@@ -75,7 +78,7 @@ class Oystercard
     }
   end
 
-  def update_journey_history
+  def add_complete_journey
     @journey_history << {
       entry_station: journey.entry_station,
       exit_station: journey.exit_station
