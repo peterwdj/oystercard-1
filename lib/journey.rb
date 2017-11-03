@@ -27,16 +27,13 @@ class Journey
     @exit_station = nil
   end
 
-  def fare
-    calculate_fare
-  end
-
   private
 
   def add_journey
     [{ @entry_station => @exit_station }]
   end
 
+<<<<<<< HEAD
   def calculate_fare
     p @oystercard.journey_log
     journey_to_calculate = @journey_log.journey_history.last
@@ -45,4 +42,6 @@ class Journey
     end
   end
 
+=======
+>>>>>>> parent of 550628a... Added method in Journey class to calculate fares
 end

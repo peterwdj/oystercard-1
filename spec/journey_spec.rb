@@ -17,28 +17,8 @@ describe Journey do
   end
 
   describe '#fare' do
-    it "Should deduct a fare of £4 for a trip from Zone 1 to Zone 4" do
-      allow(entry_station).to receive(:zone) { 1 }
-      allow(exit_station).to receive(:zone) { 4 }
-      subject.start_journey(entry_station)
-      subject.end_journey(exit_station)
-      expect(subject.fare).to eq 4
-    end
+    it "Should deduct a fare of £3 for a trip from Zone 1 to Zone 3" do
 
-    it "Should deduct a fare of £4 for a trip from Zone 3 to Zone 3" do
-      allow(entry_station).to receive(:zone) { 3 }
-      allow(exit_station).to receive(:zone) { 3 }
-      subject.start_journey(entry_station)
-      subject.end_journey(exit_station)
-      expect(subject.fare).to eq 1
-    end
-
-    it "Should deduct a fare of £4 for a trip from Zone 5 to Zone 1" do
-      allow(entry_station).to receive(:zone) { 5 }
-      allow(exit_station).to receive(:zone) { 1 }
-      subject.start_journey(entry_station)
-      subject.end_journey(exit_station)
-      expect(subject.fare).to eq 5
     end
   end
 end
