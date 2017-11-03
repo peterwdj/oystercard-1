@@ -1,4 +1,3 @@
-# require 'journey'
 class JourneyLog
 
   attr_reader :in_journey
