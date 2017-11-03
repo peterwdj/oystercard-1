@@ -28,13 +28,20 @@ class Oystercard
     raise "Sorry insufficient funds available" if insufficient_funds?
     in_penalty?
     @journey.start_journey(station)
+    add_new_journey
     in_journey?
   end
 
   def touch_out(station = nil)
     penalty_or_fare?
     @journey.end_journey(station)
-    update_journey_history
+    if @journey_history.empty?
+      @journey_history << { entry_station: nil, exit_station: journey.exit_station }
+    elsif @journey_history.last.fetch(:exit_station) == nil
+      @journey_history.last[:exit_station] = journey.exit_station
+    else
+      update_journey_history
+    end
     reset_journey
     in_journey?
   end
@@ -59,6 +66,10 @@ class Oystercard
 
   def increment(amount)
     @balance += amount
+  end
+
+  def add_new_journey
+    @journey_history << { entry_station: journey.entry_station, exit_station: nil }
   end
 
   def update_journey_history
