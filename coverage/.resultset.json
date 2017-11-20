@@ -40,7 +40,6 @@
       ],
       "/home/peterwdj/makers/makers-junior/week-2/oystercard/lib/journey_log.rb": [
         1,
-        1,
         null,
         1,
         1,
@@ -99,6 +98,26 @@
         null,
         null
       ],
+      "/home/peterwdj/makers/makers-junior/week-2/oystercard/spec/journey_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
       "/home/peterwdj/makers/makers-junior/week-2/oystercard/lib/journey.rb": [
         1,
         1,
@@ -133,26 +152,6 @@
         null,
         1,
         1,
-        null,
-        null,
-        null
-      ],
-      "/home/peterwdj/makers/makers-junior/week-2/oystercard/spec/journey_spec.rb": [
-        1,
-        null,
-        1,
-        2,
-        2,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
         null,
         null,
         null
@@ -201,8 +200,6 @@
         null
       ],
       "/home/peterwdj/makers/makers-junior/week-2/oystercard/lib/oystercard.rb": [
-        1,
-        null,
         1,
         1,
         null,
@@ -292,6 +289,6 @@
         null
       ]
     },
-    "timestamp": 1509713519
+    "timestamp": 1509734646
   }
 }
