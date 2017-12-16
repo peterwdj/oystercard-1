@@ -12,7 +12,7 @@ The challenge was designed to get students to think about domain modelling, clas
 
 #### Running the application
 
-This is a command line application. To run it, simply open a terminal and require the files.
+This is a command line application. To run it, simply open IRB or another Ruby REPL of your choice in the terminal and require the files.
 
 
 #### Challenges
